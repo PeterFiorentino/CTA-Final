@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-      let insertQuery =`INSERT into users(username, avatar_url) 
+      let insertQuery =`INSERT INTO users(username, avatar_url) 
       VALUES($1, $2)`
 
       if(!req.body.username && !req.body.avatar_url){
@@ -50,8 +50,9 @@ router.post('/', async (req, res) => {
           await db.none(insertQuery, [req.body.username, req.body.avatar_url]);
 
           res.json({
-              user: req.body.username + " " + "& " + req.body.avatar_url,
-              message: "posted"
+              user: req.body.username,
+              avatar_url: req.body.avatar_url,
+              message: `Posted ${req.body.username} successfully.`
           })
       }
   } catch(error) {
