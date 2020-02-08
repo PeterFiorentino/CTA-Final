@@ -63,5 +63,38 @@ router.post('/', async (req, res) => {
     }
   });
   
+  router.get('/genre/:genre_id', async (req, res) => {
+    try {
+        let showByGenre = await db.any(`SELECT * FROM shows WHERE genre_id = $1`, [req.params.genre_id])
+        res.json({
+        status: "Success",
+        body: {
+            shows: showByGenre
+        }
+        })
+    } catch (error) {
+        res.json({
+        message: "There was a problem getting a show with that Genre ID.",
+        err: error
+        })
+    }
+  });
+  
+  router.get('/user/:user_id', async (req, res) => {
+    try {
+        let showByUser = await db.any(`SELECT * FROM shows WHERE user_id = $1`, [req.params.user_id])
+        res.json({
+        status: "Success",
+        body: {
+            shows: showByUser
+        }
+        })
+    } catch (error) {
+        res.json({
+        message: "There was a problem getting a show with that User ID.",
+        err: error
+        })
+    }
+  });
 
 module.exports = router;
