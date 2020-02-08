@@ -16,12 +16,8 @@ class Users extends React.Component {
     getAllUsers = async () => {
         try {
             let res = await axios.get(`http://localhost:3001/users`)
-            let newArr = [];
-            res.data.body.users.map((user) => {
-                newArr.push(user)
-            })
             this.setState({
-                users: newArr
+                users: res.data.body.users
             })
         } catch (error) {
             console.log(error)
@@ -37,7 +33,14 @@ class Users extends React.Component {
         return(
             <div>
                 <h1> Users Page</h1>
-                {users.map((user) => {return <div className="userPageUsers"><img src={user.avatar_url}/><Link to={`/users/${user.id}`} username={user.username}>{user.username}</Link></div>})}
+                {users.map((user) => {
+                    return (
+                        <div className="userPageUsers">
+                            <img src={user.avatar_url}/>
+                            <Link to={`/users/${user.id}`}>{user.username}</Link>
+                        </div>
+                    )
+                })}
             </div>
         )
     }

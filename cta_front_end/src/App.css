@@ -37,7 +37,7 @@
   }
 }
 
-.userPageUsers {
+.userPageUsers, .profileShows {
   border-style: solid;
   height: 130px;
   width: 33%;
@@ -62,5 +62,19 @@
   border-radius: 50%;
 }
 
+.profileShows > img {
+  margin: 2%;
+  height: 75%;
+}
+
+
+.profileShowInfo > p {
+  display: inline-block;
+  margin-top: 0;
+}
+
+.profileShowInfo > h3 {
+  margin-bottom: 0;
+}
 
 
