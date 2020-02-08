@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       res.json({
         status: "Success",
         body: {
-          users: allGenres
+          genres: allGenres
         }
       })
     } catch (error) {
