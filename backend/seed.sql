@@ -73,7 +73,7 @@ VALUES ('BEST SHOW EVER!!', 1, 1);
 INSERT INTO comments (comment_body, user_id, show_id)
 VALUES ('Of course you would think so Jon', 2, 1);
 
-
+SELECT * FROM users WHERE id = 1;
 
 
 
