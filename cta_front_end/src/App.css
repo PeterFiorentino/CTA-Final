@@ -36,3 +36,31 @@
     transform: rotate(360deg);
   }
 }
+
+.userPageUsers {
+  border-style: solid;
+  height: 130px;
+  width: 33%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2%;
+}
+
+.userPageUsers > img {
+  border-radius: 50%;
+  height: 100%;
+}
+
+.userPageUsers > p {
+  font-size: 100%;
+  font-weight: bold;
+  margin: auto;
+}
+
+.profile > img {
+  border-radius: 50%;
+}
+
+
+
