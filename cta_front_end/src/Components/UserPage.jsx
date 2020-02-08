@@ -6,8 +6,9 @@ class UserPage extends React.Component {
     constructor() {
         super()
         this.state = {
-            user_id: 0,
-            username: "",
+            user_id: 1,
+            username: "Jon Snow",
+            thisProfilesName: "",
             user_img_url: "",
             shows: []
         }
@@ -19,7 +20,7 @@ class UserPage extends React.Component {
             let res = await axios.get(`http://localhost:3001/users/${user_id}`)
             
             this.setState({
-                username: res.data.body.users.username,
+                thisProfilesName: res.data.body.users.username,
                 user_id: res.data.body.users.id,
                 user_img_url: res.data.body.users.avatar_url
             })
@@ -40,14 +41,6 @@ class UserPage extends React.Component {
         }
     }
 
-    getGenre = async (genre_id) => {
-        try{
-            let res = await axios.get(`http://localhost:3001/genres`)
-        } catch (error) {
-            console.log(error)
-        }
-
-    }
 
     componentDidMount() {
         this.getUser();
@@ -58,7 +51,7 @@ class UserPage extends React.Component {
         const {shows} = this.state
         return(
             <div className="profile">
-                <h1> {this.state.username}</h1>
+                <h1> {this.state.thisProfilesName}</h1>
                 <img src={this.state.user_img_url}/>
                 <h3>Watching:</h3>
                 {shows.map((show) => {

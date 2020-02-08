@@ -41,11 +41,11 @@ router.post('/', async (req, res) => {
         let insertQuery =`INSERT INTO shows(title, img_url, user_id, genre_id) 
         VALUES($1, $2, $3, $4)`
   
-        if(!req.body.title || !req.body.img_url || !req.body.user_id || !req.body.genre_id){
-            res.json({
-                "message": "Information Missing"
-            })
-        }else {
+        // if(!req.body.title || !req.body.img_url || !req.body.user_id || !req.body.genre_id){
+            // res.json({
+            //     "message": "Information Missing"
+            // })
+        // }else {
             await db.none(insertQuery, [req.body.title, req.body.img_url, req.body.user_id, req.body.genre_id]);
   
             res.json({
@@ -55,7 +55,7 @@ router.post('/', async (req, res) => {
                 genre_id: req.body.genre_id,
                 message: `Posted ${req.body.title} successfully.`
             })
-        }
+        // }
     } catch(error) {
         res.json({
             message: error
