@@ -1,3 +1,17 @@
 import React from 'react'
-import { Link, Route, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
+const NavBar = () => {
+    return (
+        <nav>
+            <strong><p>APP NAME</p></strong>
+            <Link to="/" >Home</Link>
+            <Link to="/users" >Users</Link>
+            <Link to="/shows" >Shows</Link>
+            <Link to="/about" >About</Link>
+        </nav>
+    )
+}
+
+export default NavBar;
 
