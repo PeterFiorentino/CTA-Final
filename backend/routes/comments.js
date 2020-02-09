@@ -4,7 +4,7 @@ const db = require('./db')
 
 router.get('/show/:show_id', async (req, res) => {
     try {
-        let commentsByShow = await db.any(`SELECT comments.comment_body, comments.show_id, users.username FROM comments LEFT JOIN users ON comments.user_id = users.id WHERE show_id = $1`, [req.params.show_id])
+        let commentsByShow = await db.any(`SELECT comments.comment_body, comments.show_id, users.username, users.avatar_url FROM comments LEFT JOIN users ON comments.user_id = users.id WHERE show_id = $1`, [req.params.show_id])
         res.json({
         status: "Success",
         body: {

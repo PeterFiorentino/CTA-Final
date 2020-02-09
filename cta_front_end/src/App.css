@@ -94,3 +94,21 @@ nav > a {
   margin-left: 30%;
   margin-top: 1%;
 }
+
+#surroundingComments {
+  border-style: solid;
+  width: 26%;
+  margin: auto;
+}
+
+#surroundingComments > form > input {
+  padding: 2%;
+  width: 65%;
+  margin: auto;
+  margin-top: 1%;
+}
+
+.commentAvatar {
+  border-radius: 50%;
+  height: 50px;
+}

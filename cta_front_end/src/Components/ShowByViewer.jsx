@@ -13,7 +13,8 @@ class ShowByViewer extends React.Component {
             show_img: "",
             comments: [],
             commentors_id: 1,
-            newComment: ""
+            newComment: "",
+            
         }
     }
 
@@ -41,7 +42,7 @@ class ShowByViewer extends React.Component {
             this.setState({
                 show_title: res.data.body.shows.title,
                 show_img: res.data.body.shows.img_url,
-                genre: res.data.body.shows.
+                genre: res.data.body.shows.genre_name
             })
         } catch (error) {
             console.log(error)
@@ -88,7 +89,7 @@ class ShowByViewer extends React.Component {
     }
 
     render() {
-        let { thisProfilesName, show_title, show_img, comments, user_img_url } = this.state
+        let { thisProfilesName, show_title, show_img, comments, user_img_url, genre } = this.state
         return (
             <div className="viewerPage">
                 <div id="viewerInfo">
@@ -96,20 +97,23 @@ class ShowByViewer extends React.Component {
                     <h1>{thisProfilesName} is binging {show_title}</h1>
                 </div>
                 <img src={show_img} alt={show_title}/> 
+                <p>{genre}</p>
                 <p>{comments.length} Comments</p> 
-                <form onSubmit={this.handleSubmit}>
-                    <input type="text" placeholder="Comment..." onChange={this.handleComment}></input>
-                    <button type="submit">Add</button>
-                </form>
-                {comments.map((comment) => {
-                    return (
-                        <div>
-                            <h3>{comment.username}</h3>
-                            <p>{comment.comment_body}</p>
-                        </div>
-                    )
-                })} 
-                
+                <div id="surroundingComments">
+                    <form onSubmit={this.handleSubmit}>
+                        <input type="text" placeholder="Comment..." onChange={this.handleComment}></input>
+                        <button type="submit">Add</button>
+                    </form>
+                    {comments.map((comment) => {
+                        return (
+                            <div className="individual">
+                                <img src={comment.avatar_url} alt={comment.username} className="commentAvatar"/>
+                                <h3>{comment.username}</h3>
+                                <p>{comment.comment_body}</p>
+                            </div>
+                        )
+                    })} 
+                </div>
             </div>
         )
     }   
