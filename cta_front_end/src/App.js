@@ -31,6 +31,7 @@ class App extends React.Component {
                 <Route exact path="/users/:user_id" component={UserPage}/>
                 <Route exact path="/users/:user_id/addShow" component={AddShow}/>
                 <Route exact path="/shows" component={Shows}/>
+                <Route exact path="/shows/:show_id/users/:user_id" component={Shows}/>
         </Switch>
       </div>
     );
