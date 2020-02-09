@@ -4,7 +4,7 @@ const db = require('./db')
 
 router.get('/', async (req, res) => {
     try {
-      let allShows = await db.any(`SELECT shows.title, shows.img_url, users.username, shows.user_id, users.id FROM shows LEFT JOIN users ON shows.user_id = users.id`)
+      let allShows = await db.any(`SELECT shows.title, shows.img_url, users.username, shows.id, users.id AS user_id, genres.genre_name FROM shows LEFT JOIN users ON shows.user_id = users.id JOIN genres ON genres.id = shows.genre_id`)
       res.json({
         status: "Success",
         body: {

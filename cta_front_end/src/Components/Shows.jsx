@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Shows extends React.Component {
     constructor(){
@@ -20,18 +21,23 @@ class Shows extends React.Component {
                 if(!showObj[show.title]) {
                     showObj[show.title] = {}
                     showObj[show.title].img_url = show.img_url
-                    let viewers = [];
-                    viewers.push(show.username)
-                    showObj[show.title].viewers = viewers
+                    showObj[show.title].genre = show.genre_name
+                    let viewer = {}                   
+                    viewer[show.id] = {user_id: "", username: ""}
+                    viewer[show.id].user_id = show.user_id;
+                    viewer[show.id].username = show.username;
+                    
+                    showObj[show.title].viewers = viewer
                 } else {
-                    showObj[show.title].viewers.push(show.username)
+                    showObj[show.title].viewers[show.id] = {user_id: "", username: ""}
+                    showObj[show.title].viewers[show.id].user_id = show.user_id;
+                    showObj[show.title].viewers[show.id].username = show.username;
+                    
                 }
             })
-        
             this.setState({
                 shows: showObj
             })
-            
         } catch (error) {
             console.log(error)
         }
@@ -46,18 +52,28 @@ class Shows extends React.Component {
     }
 
     render() {
+        
         const {shows} = this.state
+        console.log(shows)
         return(
             <div>
                 <h1>These are the shows everyone is watching!</h1>
                 {Object.keys(shows).map((show) => {
-                        console.log(show)
+                        // console.log(show)
 
                         return (
                             <div key={show}>
                                 <img src={shows[show].img_url}/>
                                 <h3>{show}</h3>
-                                <p>Watched by {shows[show].viewers.join(", ")}</p>
+                                <p>{shows[show].genre}</p>
+                                <ul> Currently watching: 
+                                    {Object.keys(shows[show].viewers).map((viewer) => {
+                                        // console.log(shows[show].viewers[viewer])
+                                        return (
+                                            <li><Link to={`/shows/${viewer}/users/${shows[show].viewers[viewer].user_id}`}>{`${shows[show].viewers[viewer].username}`}</Link></li>
+                                        )
+                                    })}
+                                </ul>
                             </div>
                         )
                     })

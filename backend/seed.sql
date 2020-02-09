@@ -73,10 +73,5 @@ VALUES ('BEST SHOW EVER!!', 1, 1);
 INSERT INTO comments (comment_body, user_id, show_id)
 VALUES ('Of course you would think so Jon', 2, 1);
 
-SELECT shows.title, shows.img_url, shows.user_id, genres.genre_name 
-FROM shows 
-LEFT JOIN genres 
-ON shows.genre_id = genres.id
-WHERE shows.user_id = 1;
 
 
