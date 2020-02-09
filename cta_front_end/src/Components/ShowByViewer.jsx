@@ -97,8 +97,8 @@ class ShowByViewer extends React.Component {
                     <h1>{thisProfilesName} is binging {show_title}</h1>
                 </div>
                 <img src={show_img} alt={show_title}/> 
-                <p>{genre}</p>
-                <p>{comments.length} Comments</p> 
+                <p id="genreViewer">For viewers who love {genre}</p>
+                <p id="amountOfComments">{comments.length} Comments</p> 
                 <div id="surroundingComments">
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder="Comment..." onChange={this.handleComment}></input>
@@ -106,9 +106,11 @@ class ShowByViewer extends React.Component {
                     </form>
                     {comments.map((comment) => {
                         return (
-                            <div className="individual">
-                                <img src={comment.avatar_url} alt={comment.username} className="commentAvatar"/>
-                                <h3>{comment.username}</h3>
+                            <div className="entireCommentInfo">
+                                <div className="commentorInfo">
+                                    <img src={comment.avatar_url} alt={comment.username} className="commentAvatar"/>
+                                    <h3>{comment.username}</h3>
+                                </div>
                                 <p>{comment.comment_body}</p>
                             </div>
                         )
