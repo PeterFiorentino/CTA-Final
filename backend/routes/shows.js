@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        let singleShow = await db.one(`SELECT * FROM shows WHERE id = $1`, [req.params.id])
+        let singleShow = await db.one(`SELECT shows.title, shows.img_url, users.username, shows.id, users.id AS user_id, genres.genre_name FROM shows LEFT JOIN users ON shows.user_id = users.id JOIN genres ON genres.id = shows.genre_id WHERE shows.id = $1`, [req.params.id])
         res.json({
         status: "Success",
         body: {

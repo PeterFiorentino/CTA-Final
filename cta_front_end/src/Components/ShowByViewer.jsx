@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 
 class ShowByViewer extends React.Component {
@@ -41,7 +40,8 @@ class ShowByViewer extends React.Component {
             
             this.setState({
                 show_title: res.data.body.shows.title,
-                show_img: res.data.body.shows.img_url
+                show_img: res.data.body.shows.img_url,
+                genre: res.data.body.shows.
             })
         } catch (error) {
             console.log(error)
@@ -68,8 +68,10 @@ class ShowByViewer extends React.Component {
 
     handleSubmit = async (event) => {
         event.preventDefault()
+        const { commentors_id, newComment } = this.state
+        const { show_id } = this.props.match.params
         try {
-            await axios.post
+            await axios.post(`http://localhost:3001/comments`, {comment_body: newComment, user_id: commentors_id, show_id: show_id})
         } catch (error) {
             console.log(error)
         }
@@ -81,12 +83,20 @@ class ShowByViewer extends React.Component {
         this.getComments()
     }
 
+    componentDidUpdate() {
+        this.getComments()
+    }
+
     render() {
-        let { thisProfilesName, show_title, show_img, comments } = this.state
+        let { thisProfilesName, show_title, show_img, comments, user_img_url } = this.state
         return (
-            <div>
-                <h1>{thisProfilesName} watches {show_title}</h1>
-                <img src={show_img} />  
+            <div className="viewerPage">
+                <div id="viewerInfo">
+                    <img src={user_img_url} alt={thisProfilesName} id="viewerUser"></img>
+                    <h1>{thisProfilesName} is binging {show_title}</h1>
+                </div>
+                <img src={show_img} alt={show_title}/> 
+                <p>{comments.length} Comments</p> 
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Comment..." onChange={this.handleComment}></input>
                     <button type="submit">Add</button>

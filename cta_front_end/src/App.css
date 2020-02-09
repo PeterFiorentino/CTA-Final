@@ -1,40 +1,9 @@
+html, body, #root, .App {
+  height: 100%;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
 .userPageUsers, .profileShows {
@@ -52,10 +21,12 @@
   height: 100%;
 }
 
-.userPageUsers > p {
-  font-size: 100%;
+.userPageUsers > a {
+  font-size: 170%;
   font-weight: bold;
   margin: auto;
+  text-decoration: none;
+  color: black;
 }
 
 .profile > img {
@@ -77,4 +48,49 @@
   margin-bottom: 0;
 }
 
+#home {
+  background-image: url("https://media0.giphy.com/media/l1J9DK1TP5i5yVhsY/giphy.gif");
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+nav {
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: 115px;
+}
+
+nav > strong > p {
+  color: #788018;
+  font-size: 100px;
+  font-family: "Impact", Charcoal, sans-serif;
+  margin: 0;
+}
+
+nav > a {
+  text-decoration: none;
+  margin: auto;
+  margin-bottom: 0;
+  font-size: 50px;
+  color: white;
+}
+
+#viewerUser {
+  border-radius: 50%;
+  height: 50px;
+}
+
+#viewerInfo {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+#viewerInfo > img {
+  margin-right: 0;
+  margin-left: 30%;
+  margin-top: 1%;
+}

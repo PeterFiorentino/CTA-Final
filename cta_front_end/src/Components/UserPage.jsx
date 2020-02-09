@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 
 class UserPage extends React.Component {
@@ -52,12 +51,12 @@ class UserPage extends React.Component {
         return(
             <div className="profile">
                 <h1> {this.state.thisProfilesName}</h1>
-                <img src={this.state.user_img_url}/>
+                <img src={this.state.user_img_url} alt={this.state.thisProfilesName}/>
                 <h3>Watching:</h3>
                 {shows.map((show) => {
                     return(
                         <div className="profileShows">
-                            <img src={show.img_url}/>
+                            <img src={show.img_url} alt={show.title}/>
                             <div className="profileShowInfo">
                                 <h3>{show.title}</h3>
                                 <p>{show.genre_name}</p>

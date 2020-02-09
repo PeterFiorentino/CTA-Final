@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -17,7 +16,7 @@ class Shows extends React.Component {
         try{
             let res = await axios.get(`http://localhost:3001/shows`)
             let showArr = res.data.body.shows
-            showArr.map((show) => {
+            for (let show of showArr){
                 if(!showObj[show.title]) {
                     showObj[show.title] = {}
                     showObj[show.title].img_url = show.img_url
@@ -34,7 +33,7 @@ class Shows extends React.Component {
                     showObj[show.title].viewers[show.id].username = show.username;
                     
                 }
-            })
+            }
             this.setState({
                 shows: showObj
             })
@@ -63,7 +62,7 @@ class Shows extends React.Component {
 
                         return (
                             <div key={show}>
-                                <img src={shows[show].img_url}/>
+                                <img src={shows[show].img_url} alt={show}/>
                                 <h3>{show}</h3>
                                 <p>{shows[show].genre}</p>
                                 <ul> Currently watching: 
