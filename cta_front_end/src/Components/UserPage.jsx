@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 class UserPage extends React.Component {
     constructor() {
@@ -48,6 +49,7 @@ class UserPage extends React.Component {
 
     render() {
         const {shows} = this.state
+        const { user_id } = this.props.match.params;
         return(
             <div className="profile">
                 <h1> {this.state.thisProfilesName}</h1>
@@ -64,6 +66,7 @@ class UserPage extends React.Component {
                         </div>
                     )
                 })}
+                <Link to={`/users/${user_id}/addShow`} >Add a New Show for {this.state.thisProfilesName}</Link>
             </div>
         )
     }

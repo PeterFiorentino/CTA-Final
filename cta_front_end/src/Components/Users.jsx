@@ -29,14 +29,20 @@ class Users extends React.Component {
 
     render() {
         const { users } = this.state
+        let loggedIn = ""
         return(
             <div>
                 <h1> Users</h1>
                 {users.map((user) => {
+                    if(user.username === "Jon Snow") {
+                        loggedIn = "Logged In"
+                    } else {
+                        loggedIn = ""
+                    }
                     return (
                         <div className="userPageUsers">
                             <img src={user.avatar_url} alt={user.username}/>
-                            <Link to={`/users/${user.id}`}>{user.username}</Link>
+                            <Link to={`/users/${user.id}`}>{user.username}</Link> <p id="loggedIn">{loggedIn}</p>
                         </div>
                     )
                 })}
