@@ -1,16 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 class UserPage extends React.Component {
     constructor() {
         super()
         this.state = {
-            user_id: 1,
-            username: "Jon Snow",
             thisProfilesName: "",
             user_img_url: "",
-            shows: []
+            shows: [],
+            profiles_id: 0
         }
     }
     
@@ -18,10 +17,10 @@ class UserPage extends React.Component {
         try {
             const { user_id } = this.props.match.params;
             let res = await axios.get(`http://localhost:3001/users/${user_id}`)
-            
+            console.log(res)
             this.setState({
                 thisProfilesName: res.data.body.users.username,
-                user_id: res.data.body.users.id,
+                profiles_id: res.data.body.users.id,
                 user_img_url: res.data.body.users.avatar_url
             })
         } catch (error) {
@@ -48,25 +47,25 @@ class UserPage extends React.Component {
     }
 
     render() {
-        const {shows} = this.state
-        const { user_id } = this.props.match.params;
+        const {shows, thisProfilesName, user_img_url} = this.state
+
+
         return(
             <div className="profile">
-                <h1> {this.state.thisProfilesName}</h1>
-                <img src={this.state.user_img_url} alt={this.state.thisProfilesName}/>
+                <h1> {thisProfilesName}</h1>
+                <img src={user_img_url} alt={thisProfilesName}/>
                 <h3>Watching:</h3>
                 {shows.map((show) => {
                     return(
-                        <div className="profileShows">
+                        <div className="profileShows" key={show.title}>
                             <img src={show.img_url} alt={show.title}/>
                             <div className="profileShowInfo">
-                                <h3>{show.title}</h3>
+                                <Link to={`/shows/${show.id}/users/${show.user_id}`} ><h3>{show.title}</h3></Link>
                                 <p>{show.genre_name}</p>
                             </div>
                         </div>
                     )
                 })}
-                <Link to={`/users/${user_id}/addShow`} >Add a New Show for {this.state.thisProfilesName}</Link>
             </div>
         )
     }

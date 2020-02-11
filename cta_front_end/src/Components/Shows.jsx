@@ -60,7 +60,6 @@ class Shows extends React.Component {
             <div>
                 <h1>These are the shows everyone is watching!</h1>
                 {Object.keys(shows).map((show) => {
-                        // console.log(show)
 
                         return (
                             <div key={show} className="entireShow">
@@ -71,7 +70,6 @@ class Shows extends React.Component {
                                     <strong><p className="viewerOfShows"> Currently watching: </p></strong>
                                     <div className="allTheViewers">
                                         {Object.keys(shows[show].viewers).map((viewer) => {
-                                                // console.log(shows[show].viewers[viewer])
                                                 return (
                                                     <div className="individualViewerOfShow">
                                                         <img src={shows[show].viewers[viewer].avatar_url} alt={shows[show].viewers[viewer].username} className="showViewerImg"/>

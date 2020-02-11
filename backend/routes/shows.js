@@ -82,7 +82,7 @@ router.post('/', async (req, res) => {
   
   router.get('/user/:user_id', async (req, res) => {
     try {
-        let showByUser = await db.any(`SELECT shows.title, shows.img_url, shows.user_id, genres.genre_name FROM shows LEFT JOIN genres ON shows.genre_id = genres.id WHERE shows.user_id = $1`, [req.params.user_id])
+        let showByUser = await db.any(`SELECT shows.id, shows.title, shows.img_url, shows.user_id, genres.genre_name FROM shows LEFT JOIN genres ON shows.genre_id = genres.id WHERE shows.user_id = $1`, [req.params.user_id])
         res.json({
         status: "Success",
         body: {

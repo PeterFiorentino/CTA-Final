@@ -2,17 +2,17 @@ import React from 'react';
 import axios from 'axios';
 
 class ShowByViewer extends React.Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
         this.state = {
             thisProfilesName: "",
-            user_id: 0,
-            user_img_url: "",
+            username: props.username,
+            avatar_url: props.avatar_url,
             show_title: "",
             show_img: "",
             comments: [],
-            commentors_id: 1,
+            commentors_id: props.loggedInUserId,
             newComment: "",
             
         }
@@ -73,6 +73,9 @@ class ShowByViewer extends React.Component {
         const { show_id } = this.props.match.params
         try {
             await axios.post(`http://localhost:3001/comments`, {comment_body: newComment, user_id: commentors_id, show_id: show_id})
+            this.setState({
+                newComment: ""
+            })
         } catch (error) {
             console.log(error)
         }
@@ -89,19 +92,19 @@ class ShowByViewer extends React.Component {
     }
 
     render() {
-        let { thisProfilesName, show_title, show_img, comments, user_img_url, genre } = this.state
+        let { thisProfilesName, show_title, show_img, comments, user_img_url, genre, newComment } = this.state
         return (
             <div className="viewerPage">
                 <div id="viewerInfo">
                     <img src={user_img_url} alt={thisProfilesName} id="viewerUser"></img>
                     <h1>{thisProfilesName} is binging {show_title}</h1>
                 </div>
-                <img src={show_img} alt={show_title}/> 
+                <img src={show_img} alt={show_title} id="showByViewerPoster"/> 
                 <p id="genreViewer">For viewers who love {genre}</p>
                 <p id="amountOfComments">{comments.length} Comments</p> 
                 <div id="surroundingComments">
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Comment..." onChange={this.handleComment}></input>
+                        <input type="text" placeholder="Comment..." onChange={this.handleComment} value={newComment}></input>
                         <button type="submit">Add</button>
                     </form>
                     {comments.map((comment) => {

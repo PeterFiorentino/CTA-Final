@@ -3,10 +3,11 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 class Users extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             users: [],
+            username: props.username
 
         }
         
@@ -34,7 +35,7 @@ class Users extends React.Component {
             <div>
                 <h1> Users</h1>
                 {users.map((user) => {
-                    if(user.username === "Jon Snow") {
+                    if(user.username === this.state.username) {
                         loggedIn = "Logged In"
                     } else {
                         loggedIn = ""
