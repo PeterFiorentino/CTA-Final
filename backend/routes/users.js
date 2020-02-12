@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 const db = require('./db')
 
-/* GET users listing. */
 router.get('/', async (req, res) => {
   try {
     let allUsers = await db.any(`SELECT * FROM users`)
@@ -61,5 +60,6 @@ router.post('/', async (req, res) => {
       })
   }
 })
+
 
 module.exports = router;

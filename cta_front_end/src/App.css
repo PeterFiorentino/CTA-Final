@@ -39,15 +39,14 @@ a:hover {
 
 .profile > img {
   border-radius: 50%;
+  height: 25%;
+  width: 25%;
 }
 
 .profileShows > img {
   margin: 2%;
   height: 75%;
 }
-
-
-
 
 .profileShowInfo > p {
   display: inline-block;

@@ -36,10 +36,11 @@ INSERT INTO genres (genre_name) VALUES ('Comedy'); -- 3
 INSERT INTO genres (genre_name) VALUES ('Fantasy'); -- 4
 
 -- INSERT USERS
-INSERT INTO users (username, avatar_url) VALUES ('Jon Snow', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kit-harington-hair-jon-snow-1569167827.jpg?crop=0.439xw:0.878xh;0.0221xw,0.0306xh&resize=480:*'); -- 1
-INSERT INTO users (username, avatar_url) VALUES ('Daenerys Targaryen', 'https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/36/1504608500-daenerys.jpg?crop=0.665xw:1.00xh;0.0950xw,0&resize=480:*'); -- 2
-INSERT INTO users (username, avatar_url) VALUES ('Michael Scott', 'https://i1.sndcdn.com/avatars-000162505694-i81i0k-t500x500.jpg'); -- 3
-INSERT INTO users (username, avatar_url) VALUES ('Pam Beesly', 'https://i1.sndcdn.com/avatars-000150274248-xnvnyn-t500x500.jpg'); -- 4
+INSERT INTO users (username, avatar_url) VALUES ('Lord Voldemort', 'https://d.newsweek.com/en/full/301392/voldemort.jpg?w=1600&h=1600&q=88&f=448a2f79833ef3d618b7a440c4ea5671');
+INSERT INTO users (username, avatar_url) VALUES ('Jon Snow', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kit-harington-hair-jon-snow-1569167827.jpg?crop=0.439xw:0.878xh;0.0221xw,0.0306xh&resize=480:*'); 
+INSERT INTO users (username, avatar_url) VALUES ('Daenerys Targaryen', 'https://hips.hearstapps.com/digitalspyuk.cdnds.net/17/36/1504608500-daenerys.jpg?crop=0.665xw:1.00xh;0.0950xw,0&resize=480:*');
+INSERT INTO users (username, avatar_url) VALUES ('Michael Scott', 'https://i1.sndcdn.com/avatars-000162505694-i81i0k-t500x500.jpg'); 
+INSERT INTO users (username, avatar_url) VALUES ('Pam Beesly', 'https://i1.sndcdn.com/avatars-000150274248-xnvnyn-t500x500.jpg');
 
 -- INSERT SHOWS
 INSERT INTO shows (title, img_url, user_id, genre_id)
@@ -66,12 +67,17 @@ INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 1, 3);
 INSERT INTO shows (title, img_url, user_id, genre_id)
 VALUES ('The Simpsons', 'https://image.tmdb.org/t/p/w370_and_h556_bestv2/yTZQkSsxUFJZJe67IenRM0AEklc.jpg', 4, 3);
+INSERT INTO shows (title, img_url, user_id, genre_id)
+VALUES ('Bojack Horsemam', 'https://m.media-amazon.com/images/M/MV5BYWQwMDNkM2MtODU4OS00OTY3LTgwOTItNjE2Yzc0MzRkMDllXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg', 1, 3);
+
 
 -- INSERT COMMENTS
 INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('BEST SHOW EVER!!', 1, 1);
+VALUES ('BEST SHOW EVER!!', 2, 1);
 INSERT INTO comments (comment_body, user_id, show_id)
-VALUES ('Of course you would think so Jon', 2, 1);
+VALUES ('Of course you would think so Jon', 3, 1);
+INSERT INTO comments (comment_body, user_id, show_id)
+VALUES ('NOT EVIL ENOUGH', 1, 2);
 
 
 

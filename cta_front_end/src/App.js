@@ -17,9 +17,9 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      username: "Jon Snow",
+      username: "Lord Voldemort",
       user_id: 1,
-      avatar_url: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/kit-harington-hair-jon-snow-1569167827.jpg?crop=0.439xw:0.878xh;0.0221xw,0.0306xh&resize=480:*"
+      avatar_url: "https://d.newsweek.com/en/full/301392/voldemort.jpg?w=1600&h=1600&q=88&f=448a2f79833ef3d618b7a440c4ea5671"
     }
   }
 
